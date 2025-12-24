@@ -1,4 +1,4 @@
-import 'package:first_app/pages/ProfileScreen.dart';
+import 'package:first_app/pages/DashboardScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,12 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
+      title: 'Flutter Layout Mastery',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
       ),
-      home: const ProfileScreen(),
+      home: const DashboardScreen(),
     );
   }
 }
