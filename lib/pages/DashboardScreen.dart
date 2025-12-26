@@ -1,4 +1,6 @@
 import 'package:first_app/pages/ActivityCard.dart';
+import 'package:first_app/pages/ProductList.dart';
+import 'package:first_app/pages/ProfileScreen.dart';
 import 'package:first_app/pages/statCard.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,30 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
-      appBar: AppBar(title: const Text('Dashboard'), elevation: 0),
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileScreen()),
+              );
+            },
+            icon: const Icon(Icons.person),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProductListPage()),
+              );
+            },
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           // Main column containing all dashboard sections
