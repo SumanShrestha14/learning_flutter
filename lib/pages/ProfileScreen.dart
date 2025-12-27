@@ -1,3 +1,4 @@
+import 'package:first_app/pages/CounterPage.dart';
 import 'package:first_app/pages/DashboardScreen.dart';
 import 'package:first_app/pages/ProductList.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
               email: 'Suman@Shrestha.com',
             ),
             const SizedBox(height: 32),
-            Row(
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ElevatedButton(
@@ -44,7 +45,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: const Text("Dashboard"),
                 ),
-                const SizedBox(width: 10),
+                const SizedBox(height: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Navigate to dashboard (add your navigation logic)
@@ -65,6 +66,25 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   child: const Text("Product"),
                 ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    // Navigate to dashboard (add your navigation logic)
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Counterpage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.teal.shade700,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 32,
+                      vertical: 16,
+                    ),
+                  ),
+                  child: const Text("Counter "),
+                ),
               ],
             ),
           ],
@@ -74,7 +94,6 @@ class ProfileScreen extends StatelessWidget {
   }
 }
 
-// StatelessWidget because the card content doesn't change at runtime
 class ProfileCard extends StatelessWidget {
   final String name;
   final String jobTitle;
@@ -155,7 +174,6 @@ class ProfileCard extends StatelessWidget {
   }
 }
 
-// Helper widget for contact info rows
 class _ContactInfoRow extends StatelessWidget {
   final IconData icon;
   final String text;
