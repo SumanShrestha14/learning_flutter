@@ -1,4 +1,4 @@
-import 'package:first_app/pages/ProfileScreen.dart';
+import 'package:first_app/pages/LoginPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
       ),
-      home: ProfileScreen(),
+      home: LoginPage(),
     );
   }
 }
