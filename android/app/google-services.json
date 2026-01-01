@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "179837147792",
+    "project_id": "flutterlearn-844ed",
+    "storage_bucket": "flutterlearn-844ed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179837147792:android:e954c10bd66b56a4351615",
+        "android_client_info": {
+          "package_name": "com.example.first_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHh2W-dgTrK3MaPtgkmbeBvrxt2FX40GU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
