@@ -1,30 +1,38 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_app/firebase/firebaselogic.dart';
+import 'package:first_app/pages/firebase/firebase_register_page.dart';
+import 'package:first_app/pages/firebase/firebaselogic.dart';
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final firebaselogic = Firebaselogic();
   bool isLoading = false;
 
-  Future<void> registerUser() async {
+  Future<void> loginUser() async {
     setState(() => isLoading = true);
-    await firebaselogic.register(
-      emailController.text.trim(),
-      passwordController.text.trim(),
-    );
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Account Created Successfully")),
-    );
-    Navigator.pop(context); // Go back to login
+    try {
+      await firebaselogic.login(
+        emailController.text.trim(),
+        passwordController.text.trim(),
+      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text("Login Successful")));
+      // Navigate to home page here
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Login Failed: $e")));
+    } finally {
+      setState(() => isLoading = false);
+    }
   }
 
   @override
@@ -37,13 +45,13 @@ class _RegisterPageState extends State<RegisterPage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
-                "Create Account",
+                "Welcome Back",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
               const Text(
-                "Sign up to get started",
+                "Sign in to continue",
                 style: TextStyle(fontSize: 16, color: Colors.grey),
                 textAlign: TextAlign.center,
               ),
@@ -77,7 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 20),
 
               ElevatedButton(
-                onPressed: isLoading ? null : registerUser,
+                onPressed: isLoading ? null : loginUser,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
@@ -86,7 +94,18 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 child: isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text("Register", style: TextStyle(fontSize: 16)),
+                    : const Text("Login", style: TextStyle(fontSize: 16)),
+              ),
+              const SizedBox(height: 16),
+
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const RegisterPage()),
+                  );
+                },
+                child: const Text("Create a new account"),
               ),
             ],
           ),
