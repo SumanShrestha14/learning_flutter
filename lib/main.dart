@@ -1,12 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:first_app/firebase/firebase_login_page.dart';
 import 'package:first_app/firebase_options.dart';
-import 'package:first_app/pages/local_storage/HomePage.dart';
-import 'package:first_app/pages/local_storage/LocalStorage.dart';
-import 'package:first_app/pages/local_storage/LoginPage.dart';
-import 'package:first_app/pages/local_storage/ThemeProvider.dart';
+import 'package:first_app/pages/animations/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() async {
   // For Firebase
@@ -71,8 +66,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Firebase System",
-      home: LoginPage(),
+      title: "Animations",
+      home: HomePage(),
     );
   }
 }
